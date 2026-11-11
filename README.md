@@ -76,3 +76,6 @@ tweaks/*.js        Tweaks per platform (apply + revert scripts)
 src/               UI (HTML/CSS/JS) and game guides
 build/icon.png     App icon
 ```
+
+
+### developed by anzo + foogiemaster88. Uploaded by anzo
