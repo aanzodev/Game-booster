@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'">
+  <title>Game Booster</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="logo">⚡</span> Game Booster</div>
+    <nav>
+      <button class="nav active" data-page="home">🏠 Home</button>
+      <button class="nav" data-page="fps">🎮 FPS Tweaks</button>
+      <button class="nav" data-page="network">🌐 Network</button>
+      <button class="nav" data-page="clean">🧹 Cleaner</button>
+      <button class="nav" data-page="games">📘 Game Guides</button>
+    </nav>
+    <button id="deviceBtn" class="device-btn">Device: …</button>
+  </aside>
+
+  <main>
+    <div id="mismatch" class="banner hidden"></div>
+
+    <!-- HOME -->
+    <section id="page-home" class="page active">
+      <h1>Boost your games</h1>
+      <p class="sub">Safe tweaks you can undo, a cleaner, and the in-game settings that matter most.</p>
+      <div class="stats" id="stats"></div>
+      <div class="hero card">
+        <div>
+          <h2>One-click boost</h2>
+          <p>Applies every <b>recommended</b> tweak for your device and cleans junk files. You may be asked for your password or admin permission once.</p>
+        </div>
+        <button id="boostAll" class="btn big">⚡ Boost now</button>
+      </div>
+      <div class="card honest">
+        <h3>What to expect</h3>
+        <p>System tweaks usually add <b>5–15%</b> FPS and smoother frames (fewer drops). They can't double your FPS. The big jumps come from <b>in-game settings</b> (Fortnite Performance mode, DLSS/FSR), <b>GPU drivers</b>, your <b>monitor's refresh rate</b>, and <b>XMP/EXPO</b> in BIOS. See <a href="#" data-goto="games">Game Guides</a>.</p>
+      </div>
+      <div class="card" id="manualBox"></div>
+    </section>
+
+    <!-- FPS -->
+    <section id="page-fps" class="page">
+      <h1>FPS Tweaks</h1>
+      <p class="sub">Each tweak shows what it does. Click <b>Undo</b> any time to restore the default.</p>
+      <div id="fpsList" class="list"></div>
+      <h3 class="mt">Useful settings &amp; drivers</h3>
+      <div id="links" class="links"></div>
+    </section>
+
+    <!-- NETWORK -->
+    <section id="page-network" class="page">
+      <h1>Network</h1>
+      <p class="sub">Test your connection, then apply tweaks for steadier online play.</p>
+      <div class="card">
+        <div class="row-between">
+          <h2>Ping test</h2>
+          <button id="pingBtn" class="btn">Run test</button>
+        </div>
+        <div id="pingResults" class="ping-grid"></div>
+        <p class="hint" id="pingAdvice"></p>
+      </div>
+      <div id="netList" class="list"></div>
+      <div class="card honest">
+        <h3>The biggest internet wins</h3>
+        <ul>
+          <li><b>Use an Ethernet cable</b> instead of Wi-Fi. This removes most lag spikes.</li>
+          <li>On Wi-Fi: use the <b>5 GHz</b> network and get closer to the router.</li>
+          <li>Pause downloads, streams and cloud backups on your network while playing.</li>
+          <li>Pick the <b>closest server region</b> in each game (Fortnite: Settings → Game → Matchmaking Region).</li>
+          <li>If your router has QoS / gaming mode, turn it on and prioritize your PC.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CLEAN -->
+    <section id="page-clean" class="page">
+      <h1>Cleaner</h1>
+      <p class="sub">Finds temp files, logs and caches that waste space. Files in use are skipped automatically.</p>
+      <div class="card">
+        <div class="row-between">
+          <h2>Junk files <span id="cleanTotal" class="pill"></span></h2>
+          <div>
+            <button id="scanBtn" class="btn ghost">Scan</button>
+            <button id="cleanBtn" class="btn">Clean selected</button>
+          </div>
+        </div>
+        <div id="cleanList" class="clean-list"><p class="hint">Click Scan to find junk files.</p></div>
+      </div>
+      <div id="deepList" class="list"></div>
+    </section>
+
+    <!-- GAMES -->
+    <section id="page-games" class="page">
+      <h1>Game Guides</h1>
+      <p class="sub">Best settings for more FPS, or better visuals at the same FPS.</p>
+      <div id="gameTabs" class="tabs"></div>
+      <div id="gameGuide"></div>
+    </section>
+  </main>
+
+  <!-- Device picker -->
+  <div id="deviceModal" class="modal hidden">
+    <div class="modal-box">
+      <h2>What device are you on?</h2>
+      <p class="sub" id="detectedText"></p>
+      <div class="device-grid">
+        <button class="device" data-device="windows"><span>🪟</span>Windows PC</button>
+        <button class="device" data-device="mac"><span>🍎</span>Mac</button>
+        <button class="device" data-device="linux"><span>🐧</span>Linux</button>
+        <button class="device" data-device="chromeos"><span>💻</span>Chromebook</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <div id="log" class="log hidden"><div class="row-between"><b>Details</b><button id="logClose" class="x">✕</button></div><pre id="logText"></pre></div>
+
+  <script src="games.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>
