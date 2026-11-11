@@ -78,4 +78,4 @@ build/icon.png     App icon
 ```
 
 
--# developed by anzo + foogiemaster88. Uploaded by anzo
+`developed by anzo + foogiemaster88. Uploaded by anzo`
